@@ -5,6 +5,7 @@ ruby '2.1.2'
 gem 'rake'
 gem 'thin'
 gem 'sinatra'
+gem 'sinatra-flash'
 gem 'sequel'
 gem 'json'
 
