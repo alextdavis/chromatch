@@ -3,14 +3,12 @@ class User < Sequel::Model
   # --- Associations ---
 
   one_to_many :expertises
-  one_to_mnay :taggings
+  one_to_many :taggings
   many_to_many :bookmarkings
 
   # --- Hooks ---
 
   # --- Validation ---
-
-
 
   # --- Class Methods ---
 
