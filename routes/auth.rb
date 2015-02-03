@@ -22,7 +22,7 @@ class Chromatch < Sinatra::Base
       session[:user] = user.token
 
       flash[:success] = 'You have successfully logged in!'
-      redirect url('/admin')
+      redirect url('/')
     end
   end
 

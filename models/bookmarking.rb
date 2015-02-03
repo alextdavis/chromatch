@@ -1,6 +1,8 @@
 class Bookmarking < Sequel::Model
   # --- Associations ---
 
+  many_to_one :user
+
   # --- Hooks ---
 
   # --- Validation ---
