@@ -1,5 +1,5 @@
 class Chromatch < Sinatra::Base
   get '/' do
-    erb :home
+    erb :public
   end
 end

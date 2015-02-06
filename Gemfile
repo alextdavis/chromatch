@@ -6,6 +6,8 @@ gem 'rake'
 gem 'thin'
 gem 'sinatra'
 gem 'sinatra-flash'
+gem 'sinatra-contrib'
+gem 'omniauth-google-oauth2'
 gem 'sequel'
 gem 'json'
 

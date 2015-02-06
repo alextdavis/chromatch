@@ -1,4 +1,4 @@
-Sequel.migrations do
+Sequel.migration do
   up do
     create_table :taggings do
       primary_key :id

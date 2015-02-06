@@ -12,11 +12,16 @@ class User < Sequel::Model
   def validate
     super
 
-    validates_presence [:email, :name]
-    validates_unique(:email)
+    validates_presence [:uid, :email, :name]
+    validates_unique [:uid, :email]
   end
 
   # --- Class Methods ---
 
   # --- Instance Methods ---
+
+  def generate_token
+    self.update({:token => SecureRandom.hex})
+  end
+
 end

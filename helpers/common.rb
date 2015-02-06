@@ -31,16 +31,16 @@ class Chromatch < Sinatra::Base
 
     def j(javascript)
       js_escape_map = {
-          '\\'    => '\\\\',
-          '</'    => '<\/',
-          "\r\n"  => '\n',
-          "\n"    => '\n',
-          "\r"    => '\n',
-          '"'     => '\\"',
-          "'"     => "\\'"
+          '\\'   => '\\\\',
+          '</'   => '<\/',
+          "\r\n" => '\n',
+          "\n"   => '\n',
+          "\r"   => '\n',
+          '"'    => '\\"',
+          "'"    => "\\'"
       }
       if javascript
-        javascript.gsub(/(\\|<\/|\r\n|\342\200\250|[\n\r"'])/u) {|match| js_escape_map[match] }
+        javascript.gsub(/(\\|<\/|\r\n|\342\200\250|[\n\r"'])/u) { |match| js_escape_map[match] }
       else
         ''
       end
