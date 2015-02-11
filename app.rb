@@ -22,4 +22,8 @@ class Chromatch < Sinatra::Base
                  :access_type        => 'offline'
              }
   end
+
+  # before /^(\/$|\/login)/ do
+  #   test
+  # end
 end
