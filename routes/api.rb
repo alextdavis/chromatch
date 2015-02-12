@@ -1,17 +1,14 @@
 class Chromatch < Sinatra::Base
   get '/api/expertise/:id' do
-    login_required
     expertise = Expertise[params[:id]]
     expertise.to_json
   end
 
   post '/api/expertise/create' do
-    login_required
     puts 'doing'
     puts params.inspect
     begin
       expertise = Expertise.create(params.pick_pairs(%w(statement source)).merge({:user => current_user}))
-      puts expertise.inspect
     rescue Sequel::Error => e
       halt 403, e.message
     end
@@ -19,21 +16,20 @@ class Chromatch < Sinatra::Base
   end
 
   post '/api/expertise/update/:id' do
-    login_required
     begin
       expertise = Expertise.with_pk!(params[:id])
-      owner_required expertise.user.id
+      halt 403, "Permission Denied" unless is_owner? expertise.user.id
       expertise.update(params.pick_pairs(%w(statement source)))
-      expertise.to_json
     rescue Sequel::Error => e
       halt 403, e.message
     end
+    expertise.to_json
   end
 
   post '/api/expertise/delete/:id' do
     begin
       expertise = Expertise.with_pk!(params[:id])
-      owner_required expertise.user.id
+      halt 403, "Permission Denied" unless is_owner? expertise.user.id
       expertise.destroy
       halt 200
     rescue Sequel::Error => e
@@ -41,10 +37,27 @@ class Chromatch < Sinatra::Base
     end
   end
 
-  post '/api/bookark/create' do
-    login_required
+  get '/api/bookmarks' do
+      current_user.bookmarks_dataset.select(:id).to_json
+  end
+
+  post '/api/bookmark/create' do
     begin
-      bookmarking = Bookmarking.create(:bookmarker => current_user, :bookmarked => User.with_pk!(params[:user_id]))
+      current_user.bookmarks.create(:bookmarker => current_user, :bookmarked => User.with_pk!(params[:user_id]))
+    rescue Sequel::Error => e
+      halt 403, e.message
+    end
+    bookmarking.to_json
+  end
+
+  post '/api/bookmark/delete/:id' do
+    begin
+      bookmarking = Bookmarking.with_pk!(params[:id])
+      halt 403, "Permission Denied" unless is_owner? bookmarking.bookmarker.id
+      bookmarking.destroy
+      halt 200
+    rescue Sequel::Error => e
+      halt 403, e.message
     end
   end
 end

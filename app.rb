@@ -23,7 +23,7 @@ class Chromatch < Sinatra::Base
              }
   end
 
-  # before /^(\/$|\/login)/ do
-  #   test
-  # end
+  before /^(?!\/$|\/login$|\/auth\/.+).*/ do # unless it's / or /login or /auth/*
+    login_required # unless ENV["DISABLE_AUTH"]
+  end
 end
