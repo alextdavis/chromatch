@@ -22,4 +22,8 @@ class Chromatch < Sinatra::Base
                  :access_type        => 'offline'
              }
   end
+
+  before /^(?!\/$|\/login$|\/auth\/.+).*/ do # unless it's / or /login or /auth/*
+    login_required # unless ENV["DISABLE_AUTH"]
+  end
 end

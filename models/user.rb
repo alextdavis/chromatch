@@ -4,7 +4,7 @@ class User < Sequel::Model
 
   one_to_many :expertises
   one_to_many :taggings
-  many_to_many :bookmarkings
+  many_to_many :bookmarks, :left_key => :bookmarked_id, :right_key => :bookmarker_id, :join_table => :bookmarkings, :class => self
 
   # --- Hooks ---
 
