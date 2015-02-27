@@ -1,0 +1,11 @@
+<% @items.each do |item| %>
+    <li class="collection-item avatar result-item">
+      <img src="<%= item[:avatar] %>" alt="" class="circle">
+      <a href="/user/<%= item[:id] %>"><span class="title"><%= item[:name] %></span></a>
+
+      <p>
+        <%= item[:info] %>
+      </p>
+      <a href="#!" class="secondary-content"><i class="fa fa-star<%= item[:bookmarked] ? '' : '-o' %>"></i></a>
+    </li>
+<% end %>
