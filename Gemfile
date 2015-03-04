@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.1.2'
+ruby '2.1.5'
 
 gem 'rake'
 gem 'thin'
@@ -16,7 +16,7 @@ group :development do
   gem 'thin'
 end
 
-group :production do
-  gem 'pg'
-  gem 'passenger', '~> 4.0.53'
-end
+# group :production do
+#   gem 'pg'
+#   gem 'passenger', '~> 4.0.53'
+# end
