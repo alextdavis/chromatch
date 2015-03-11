@@ -1,8 +1,8 @@
-class Tagging < Sequel::Model
+class Labelling < Sequel::Model
   # --- Associations ---
 
   many_to_one :user
-  many_to_one :tags
+  many_to_one :label
 
   # --- Hooks ---
 
