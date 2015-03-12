@@ -3,7 +3,7 @@ require 'bundler'
 
 Bundler.require
 
-require './seed'
+require './seed/seed.rb'
 
 Sequel.extension :migration
 DB = Sequel.connect(ENV['DATABASE_URL'] || 'sqlite://db/main.db')

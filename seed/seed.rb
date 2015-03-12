@@ -1,7 +1,7 @@
-names_f = File.new('randomnames.txt', 'r')
+names_f = File.new('./seed/randomnames.txt', 'r')
 @names = names_f.readlines
 names_f.close
-careers_f = File.new('randomcareers.txt', 'r')
+careers_f = File.new('./seed/randomcareers.txt', 'r')
 @careers = careers_f.readlines
 careers_f.close
 

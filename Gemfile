@@ -1,10 +1,9 @@
 source 'http://rubygems.org'
 
-ruby '2.1.5'
+#ruby '2.1.2'
 
 gem 'backports', '~> 3.6.4'
 gem 'rake'
-gem 'sqlite3', '~> 1.3.10'
 gem 'thin'
 gem 'sinatra'
 gem 'sinatra-flash'
@@ -20,5 +19,5 @@ end
 
 group :production do
   gem 'pg'
-  gem 'passenger', '~> 4.0.53'
+  gem 'passenger'
 end
