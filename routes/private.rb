@@ -7,6 +7,16 @@ class Chromatch < Sinatra::Base
     erb :profile
   end
 
+  get '/profile/edit' do
+    erb :profile_edit
+  end
+
+  post '/profile/update' do
+    puts params.inspect
+
+    redirect '/profile'
+  end
+
   get '/search' do
     erb :search
   end
