@@ -1,0 +1,91 @@
+<link type="text/css" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.95.1/css/materialize.css"  media="screen,projection"/>
+
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.95.1/js/materialize.js"></script>
+
+<!-- SELECT -->
+<link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0-rc.1/css/select2.min.css" rel="stylesheet" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0-rc.1/js/select2.min.js"></script>
+
+</head>
+<body>
+
+<script>
+
+</script>
+
+<div style="padding-top:1%;">
+  <div class="row">
+    <div class="col l8">
+      <div class="offset-l2" style="width:75px;height:75px;padding-left:1%;">
+        <img src="/images/placeholder_user.png" alt="Chrome" class="circle responsive-img z-depth-1">
+      </div>
+      <form method="post" action="/profile/update">
+        <ul class="flow-text">
+          <li>John Smith</li>
+          <li>john.smith@westport.k12.ct.us</li>
+          <li>Phone: <input name="phone" type="text" style="width:200px" placeholder="Enter your phone number"></li>
+          <li>School:
+            <select class="js-states form-control" name="position" style="width:200px; display:inline;">
+              <option>Select a School</option>
+              <option value="SHS">Staples High School</option>
+              <option value="CMS">Coleytown Middle School</option>
+              <option value="BMS">Bedford Middle School</option>
+            </select>
+          </li>
+          <li>Education:
+            <select type="text" class="js-example-tokenizer form-control" name="education[]" multiple="multiple" style="width:100%;display:inline;"></select>
+
+            <script>
+                $(document).ready(function(){
+                    $(".js-example-tokenizer").select2({
+                        //multiple: true,
+                        tags: [],
+                        tokenSeparators: [',']
+                    })
+                });
+            </script>
+          </li>
+          <li>Career:
+            <select class="js-example-tokenizer form-control" name="career[]" multiple="multiple" style="width:100%;display:inline;"></select>
+
+            <script>
+                $(document).ready(function(){
+                    $(".js-example-tokenizer").select2({
+                        tags: true,
+                        tokenSeparators: [',']
+                    })
+                });
+            </script>
+          </li>
+          <li>Passion:
+            <select class="js-example-tokenizer form-control" name="passion[]" multiple="multiple" style="width:100%;display:inline;"></select>
+            <script>
+                $(document).ready(function(){
+                    $(".js-example-tokenizer").select2({
+                        tags: true,
+                        tokenSeparators: [',']
+                    })
+                });
+            </script>
+          </li>
+        </ul>
+        <a class="btn waves-effect waves-light submit-btn" href="#"><i class ="tiny mdi-content-save right"></i>Save Changes</a>
+      </form>
+    </div>
+
+    <div class="col l9 valign-wrapper hide-on-med-and-down blue" style="height:200px;width:290px;">
+      <p class="flow-text align-center">Word Cloud goes here.</p>
+    </div>
+
+  </div>
+</div>
+
+<div class="col s12 m12 valign-wrapper hide-on-large-only blue" style="height:200px;width:360px;">
+  <p class="flow-text align-center">World Cloud goes here.</p>
+</div>
+
+</br>
+
+</body>

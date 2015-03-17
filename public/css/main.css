@@ -7,3 +7,9 @@ main, header, footer {
         padding-left: 0;
     }
 }
+
+.select2-dropdown {
+    display: none !important;
+}
+
+
