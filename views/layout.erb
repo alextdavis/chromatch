@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Title</title>
+  <title><%= @title ||= "Chromatch"%></title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="description" content="">
@@ -22,14 +22,13 @@
     <div class="container">
       <div class="nav-wrapper">
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-        <a id="logo-container" href="#" class="brand-logo">Title</a>
+        <a id="logo-container" href="#" class="brand-logo"><%= @title %></a>
       </div>
     </div>
   </nav>
   <ul id="nav-mobile" class="side-nav fixed">
     <li class="logo">
-      <a href="#" class="brand-logo"><br><img src="images/default_profile.jpg" alt="" class="circle responsive-profile-img left-align z-depth-1">Profile
-        Name</a></li>
+      <a href="#" class="brand-logo"><br><img src="<%= current_user.avatar %>" alt="" class="circle responsive-profile-img left-align z-depth-1" width="180" height="180"><%= current_user.name %></a></li>
     <div class="divider"></div>
     <li><a href="#" class="waves-effect"><i class="mdi-action-list"></i> Browse</a></li>
     <li><a href="#" class="waves-effect"><i class="mdi-action-search"></i> Search</a></li>

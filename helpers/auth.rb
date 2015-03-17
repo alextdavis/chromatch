@@ -2,7 +2,8 @@ class Chromatch < Sinatra::Base
   helpers do
     # Return current_user record if logged in
     def current_user
-      @current_user ||= User.first(:token => session[:user]) if session[:user]
+      return @current_user ||= User.first(:token => session[:user]) if session[:user]
+      return User.first if ENV["DISABLE_AUTH"]
     end
 
     # check if user is logged in?

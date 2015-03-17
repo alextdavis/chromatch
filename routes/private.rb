@@ -27,4 +27,10 @@ class Chromatch < Sinatra::Base
     erb :results_items, :layout => false
   end
 
+  get '/browse' do
+    @items = User.select(:id, :name, :avatar, :phone).limit(10)
+
+    erb :results_list
+  end
+
 end
