@@ -22,6 +22,8 @@ class Chromatch < Sinatra::Base
   end
 
   get '/search' do
+    # TODO: Add search controller functionality
+
     erb :search
   end
 
