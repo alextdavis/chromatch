@@ -41,6 +41,27 @@ class Chromatch < Sinatra::Base
       current_user.bookmarks_dataset.select(:id).to_json
   end
 
+  post '/api/bookmark/toggle' do
+    if current_user.has_bookmarked(params[:id])
+      begin
+        bookmarking = Bookmarking.with_pk!(params[:id])
+        halt 403, "Permission Denied" unless is_owner? bookmarking.bookmarker.id
+        bookmarking.destroy
+        halt 200
+      rescue Sequel::Error => e
+        halt 403, e.message
+      end
+      return "false"
+    else
+      begin
+        current_user.bookmarks.create(:bookmarker => current_user, :bookmarked => User.with_pk!(params[:user_id]))
+      # rescue Sequel::Error => e
+      #   halt 403, e.message
+      end
+      return "true"
+    end
+  end
+
   post '/api/bookmark/create' do
     begin
       current_user.bookmarks.create(:bookmarker => current_user, :bookmarked => User.with_pk!(params[:user_id]))

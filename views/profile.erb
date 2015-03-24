@@ -1,36 +1,15 @@
-<link type="text/css" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.95.1/css/materialize.css"  media="screen,projection"/>
-
-<!--Import jQuery before materialize.js-->
-<script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.95.1/js/materialize.js"></script>
-
-<!-- SELECT -->
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0-beta.3/css/select2.min.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0-beta.3/js/select2.min.js"></script>
-
-</head>
-<body>
-
-<!-- <select data-placeholder="Choose a country..." style="width:350px;" multiple class="chosen-select"> -->
-
-<!-- <select data-placeholder="Choose a country..." style="width:350px;" multiple class="js-example-tokenizer"> -->
-
-<script>
-
-</script>
-
 <div style="padding-top:1%;">
   <div class="row">
     <div class="col l8">
       <div class="offset-l2" style="width:75px;height:75px;padding-left:1%;">
-        <img src="images/placeholder_user.png" alt="Chrome" class="circle responsive-img z-depth-1">
+        <img src="<%= current_user.avatar %>" alt="<%= current_user.name %>" class="circle responsive-img z-depth-1">
       </div>
 
       <ul class="flow-text">
-        <li>John Smith</li>
-        <li>john.smith@westport.k12.ct.us</li>
-        <li>Phone:</li>
-        <li>School:</li>
+        <li><%= current_user.name %></li>
+        <li><%= current_user.email %></li>
+        <li>Phone: <%= current_user.phone %></li>
+        <li>School: <%= current_user.position %></li>
         <li>Education:</li>
         <li>Career:</li>
         <li>Passion:</li>
@@ -48,17 +27,8 @@
   <p class="flow-text align-center">World Cloud goes here.</p>
 </div>
 
-</br>
-
 <div class="valign-wrapper">
   <div class="valign">
     <a class="btn waves-effect waves-light" href="/profile/edit">Edit <i class="tiny mdi-image-edit right"></i></a>
   </div>
 </div>
-
-
-<!--<div class="col s12 m12 valign-wrapper hide-on-med-and-up blue" style="height:200px;width:360px;">
-  <p class="flow-text align-center">World Cloud goes here.</p>
-</div>-->
-
-</body>

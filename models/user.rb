@@ -24,4 +24,16 @@ class User < Sequel::Model
     self.update({:token => SecureRandom.hex})
   end
 
+  def has_bookmarked(bookmarked_id)
+    if self.bookmarks != []
+      return !!self.bookmarks.with(:bookmarked_id => bookmarked_id)
+    else
+      return false
+    end
+  end
+
+  def is_bookmarked_by(bookmarker_id)
+    self.bookmarks[bookmarker_id]
+  end
+
 end

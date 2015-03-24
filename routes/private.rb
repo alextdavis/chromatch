@@ -12,7 +12,11 @@ class Chromatch < Sinatra::Base
   end
 
   post '/profile/update' do
-    puts params.inspect
+    begin
+      current_user.update(params.pick_pairs(%w(phone position)))
+    rescue Sequel::Error => e
+      halt 403, e.message
+    end
 
     redirect '/profile'
   end
@@ -22,7 +26,7 @@ class Chromatch < Sinatra::Base
   end
 
   get '/bookmarks' do
-    @bookmarkings = Bookmarkings.where(:bookmarker_id => current_user.id)
+    @bookmarks = current_user.bookmarks
     erb :bookmarks
   end
 
