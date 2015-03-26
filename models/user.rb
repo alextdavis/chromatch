@@ -4,7 +4,11 @@ class User < Sequel::Model
 
   one_to_many :expertises
   one_to_many :labellings
-  many_to_many :bookmarks, :left_key => :bookmarked_id, :right_key => :bookmarker_id, :join_table => :bookmarkings, :class => self
+  many_to_many :bookmarks,
+               :left_key   => :bookmarker_id,
+               :right_key  => :bookmarked_id,
+               :join_table => :bookmarkings,
+               :class      => self
 
   # --- Hooks ---
 
@@ -25,15 +29,8 @@ class User < Sequel::Model
   end
 
   def has_bookmarked(bookmarked_id)
-    if self.bookmarks != []
-      return !!self.bookmarks.with(:bookmarked_id => bookmarked_id)
-    else
-      return false
-    end
-  end
-
-  def is_bookmarked_by(bookmarker_id)
-    self.bookmarks[bookmarker_id]
+    puts bookmarked_id            #not working
+    return self.bookmarks_dataset.where(:bookmarked_id => bookmarked_id).exists
   end
 
 end

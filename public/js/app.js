@@ -26,6 +26,8 @@ $(function() {
         }
     });
 });
+
+
 $(function () {
     $(".submit-btn").click(function (e) {
         e.preventDefault();
@@ -35,7 +37,7 @@ $(function () {
 
     $(".collection #load_more").click(function () {
         $.ajax({
-            url: '/results/more',
+            url: $(this).data('url'),
             type: 'POST',
             data: {
                 offset: $(".result_item").length
@@ -46,9 +48,11 @@ $(function () {
             }
         });
     });
+    reconnect_events();
 });
 
 function reconnect_events() {
+    $(".collection .btn-bookmark-toggle").unbind("click");
     $(".collection .btn-bookmark-toggle").click(function (e) {
         e.preventDefault();
 
@@ -62,8 +66,9 @@ function reconnect_events() {
                 is_bookmarked = data == "true";
                 $(this).find('i').removeClass(is_bookmarked ? "fa-star-o" : "fa-star").addClass(is_bookmarked ? "fa-star" : "fa-star-o");
             },
-            error: function() {
-                alert("Bookmarking operation failed");
+            error: function(data) {
+                console.log(data);
+                alert("Bookmarking operation failed: " + data);
             }
         });
     });

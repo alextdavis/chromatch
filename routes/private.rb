@@ -28,8 +28,13 @@ class Chromatch < Sinatra::Base
   end
 
   get '/bookmarks' do
-    @bookmarks = current_user.bookmarks
+    @bookmarks = current_user.bookmarks_dataset.select(Sequel.as(:bookmarked_id, :id), :name, :avatar).all
     erb :bookmarks
+  end
+
+  post '/bookmarks/more' do
+    @items = current_user.bookmarks_dataset.select(Sequel.as(:bookmarked_id, :id), :name, :avatar).all
+    erb :results_items, :layout => false
   end
 
   get '/results' do

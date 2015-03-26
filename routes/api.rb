@@ -42,19 +42,17 @@ class Chromatch < Sinatra::Base
   end
 
   post '/api/bookmark/toggle' do
-    if current_user.has_bookmarked(params[:id])
+    if current_user.has_bookmarked(params[:user_id])
       begin
-        bookmarking = Bookmarking.with_pk!(params[:id])
-        halt 403, "Permission Denied" unless is_owner? bookmarking.bookmarker.id
-        bookmarking.destroy
+        current_user.remove_bookmark(User.with_pk!(params[:user_id]))
         halt 200
-      rescue Sequel::Error => e
-        halt 403, e.message
+      # rescue Sequel::Error => e
+      #   halt 403, e.message
       end
       return "false"
     else
       begin
-        current_user.bookmarks.create(:bookmarker => current_user, :bookmarked => User.with_pk!(params[:user_id]))
+        current_user.add_bookmark(User.with_pk!(params[:user_id]))
       # rescue Sequel::Error => e
       #   halt 403, e.message
       end

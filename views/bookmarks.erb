@@ -1,10 +1,10 @@
 <h1>Bookmarks</h1>
 
-<% @items = @bookmarks #.select(:id, :name, :avatar) %>
+<% @items = @bookmarks %>
 
 <ul class="collection">
   <%= partial :results_items %>
-  <li class="collection-item avatar" id="load_more">
-    <button class="btn">Load More</button>
-  </li>
+<li class="collection-item avatar" id="load_more" data-url="/bookmarks/more">
+  <button class="btn">Load More</button>
+</li>
 </ul>
