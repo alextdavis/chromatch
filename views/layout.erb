@@ -19,23 +19,29 @@
 <body>
 <header>
   <nav class="light-blue lighten-1"> <!-- Use of <nav> here violates the spec. However, materialize gives no other option to use their styling. -->
-    <div class="container">
+    <div class="title-container">
       <div class="nav-wrapper">
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-        <a id="logo-container" href="#" class="brand-logo">Title</a>
+        <a href="#" class="brand-logo">Title</a>
       </div>
     </div>
   </nav>
   <ul id="nav-mobile" class="side-nav fixed">
-    <li class="logo">
-      <a href="#" class="brand-logo"><br><img src="images/default_profile.jpg" alt="" class="circle responsive-profile-img left-align z-depth-1">Profile
-        Name</a></li>
+    <!--<li>
+      <a href="#" class="background-white">
+      <img src="images/westport-logo.png" class="responsive-img left-align"></a>
+    </li>
+    <div class="divider"></div>-->
+    <li class="logo module">
+      <a href="#" class="brand-logo white-text " style="padding-top: 80px; padding-bottom: 10px;">
+        <img src="images/default_profile.jpg" class="circle responsive-profile-img z-depth-1 middle">  ProfileName</a>
+    </li>
     <div class="divider"></div>
-    <li><a href="#" class="waves-effect"><i class="mdi-action-list"></i> Browse</a></li>
-    <li><a href="#" class="waves-effect"><i class="mdi-action-search"></i> Search</a></li>
-    <li><a href="#" class="waves-effect"><i class="mdi-action-favorite-outline"></i> Favorites</a></li>
+    <li><a href="#" class="waves-effect" style="padding-top: 10px; padding-bottom: 10px;"><i class="mdi-action-list"></i> Browse</a></li>
+    <li><a href="#" class="waves-effect" style="padding-top: 10px; padding-bottom: 10px;"><i class="mdi-action-search"></i> Search</a></li>
+    <li><a href="#" class="waves-effect" style="padding-top: 10px; padding-bottom: 10px;"><i class="mdi-action-favorite-outline"></i> Favorites</a></li>
     <div class="divider"></div>
-    <li><a href="#" class="waves-effect"><i class="mdi-action-settings"></i> Settings</a></li>
+    <li><a href="#" class="waves-effect" style="padding-top: 10px; padding-bottom: 10px;"><i class="mdi-action-settings"></i> Settings</a></li>
   </ul>
   <script>
       $('.button-collapse').sideNav({menuWidth: 240, activationWidth: 70});
@@ -44,30 +50,30 @@
 
 <main>
   <div class="container">
-      <% if flash[:info] %>         <!-- I guess this should be updated to make toasts instead. -->
+    <% if flash[:info] %>         <!-- I guess this should be updated to make toasts instead. -->
         <div class="alert alert-info">
-            <button type="button" class="close" data-dismiss="alert">×</button> <%= flash[:info] %> </div>
-      <% end %>
-      <% if flash[:success] %>
-          <div class="alert alert-success">
-            <button type="button" class="close" data-dismiss="alert">×</button><%= flash[:success] %>  </div>
-      <% end %>
-      <% if flash[:error] %>
-          <% unless flash[:error]=='' || flash[:error]==nil || flash[:error]==[] %>
-              <div class="alert alert-danger">
-                <button type="button" class="close" data-dismiss="alert">×</button> <%= flash[:error] %> </div>
-          <% else %>
-              <div class="alert alert-danger">
-                <button type="button" class="close" data-dismiss="alert">×</button>
-                <strong> Unknown Error.</strong> It appears that an operation failed, but no error message was
-                generated.
-                Please contact site admin.
-              </div>
-          <% end %>
-      <% end %>
-      <%= yield %>
-      <br>
-      <a class="btn light-blue lighten-1 waves-effect" onclick="toast('I am a toast', 4000)">Toast!</a>
+          <button type="button" class="close" data-dismiss="alert">×</button> <%= flash[:info] %> </div>
+    <% end %>
+    <% if flash[:success] %>
+        <div class="alert alert-success">
+          <button type="button" class="close" data-dismiss="alert">×</button><%= flash[:success] %>  </div>
+    <% end %>
+    <% if flash[:error] %>
+        <% unless flash[:error]=='' || flash[:error]==nil || flash[:error]==[] %>
+            <div class="alert alert-danger">
+              <button type="button" class="close" data-dismiss="alert">×</button> <%= flash[:error] %> </div>
+        <% else %>
+            <div class="alert alert-danger">
+              <button type="button" class="close" data-dismiss="alert">×</button>
+              <strong> Unknown Error.</strong> It appears that an operation failed, but no error message was
+              generated.
+              Please contact site admin.
+            </div>
+        <% end %>
+    <% end %>
+    <%= yield %>
+    <br>
+    <a class="btn light-blue lighten-1 waves-effect" onclick="toast('I am a toast', 4000)">Toast!</a>
   </div>
 </main>
 
