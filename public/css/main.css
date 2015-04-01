@@ -137,3 +137,8 @@ img.middle {
 .tt-suggestion p {
     margin: 0;
 }
+
+.side-nav li a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
