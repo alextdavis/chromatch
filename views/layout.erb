@@ -30,8 +30,8 @@
   </nav>
   <ul id="nav-mobile" class="side-nav fixed">
     <li class="logo module">
-      <a href="#" class="brand-logo white-text " style="padding-top: 80px; padding-bottom: 10px;">
-        <img src="<%= current_user.avatar %>" class="circle responsive-profile-img z-depth-1 middle">  <%= current_user.name %>
+      <a href="#" class="brand-logo white-text " style="padding-top: 90px; padding-bottom: 10px;">
+        <img src="<%= current_user.avatar %>" class="circle responsive-profile-img z-depth-1 left-align">  <%= current_user.name %>
       </a>
     </li>
     <div class="divider"></div>
@@ -39,7 +39,7 @@
     <li><a href="/search" class="waves-effect"><i class="mdi-action-search"></i> Search</a></li>
     <li><a href="/bookmarks" class="waves-effect"><i class="fa fa-star"></i> Bookmarks</a></li>
     <div class="divider"></div>
-    <li><a href="#" class="waves-effect" style="padding-top: 10px; padding-bottom: 10px;"><i class="mdi-action-settings"></i> Settings</a></li>
+    <li><a href="#" class="waves-effect"><i class="mdi-action-settings"></i> Settings</a></li>
   </ul>
   <script>
       $('.button-collapse').sideNav({menuWidth: 240, activationWidth: 70});
@@ -71,7 +71,6 @@
     <% end %>
     <%= yield %>
     <br>
-    <a class="btn light-blue lighten-1 waves-effect" onclick="toast('I am a toast', 4000)">Toast!</a>
   </div>
 </main>
 

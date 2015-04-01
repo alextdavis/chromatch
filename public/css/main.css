@@ -138,7 +138,7 @@ img.middle {
     margin: 0;
 }
 
-.side-nav li a {
+ul.side-nav.fixed a {
     padding-top: 10px;
     padding-bottom: 10px;
 }
