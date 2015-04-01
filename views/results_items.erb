@@ -6,6 +6,6 @@
       <p>
         <%= item[:info] %>
       </p>
-      <a href="#!" class="secondary-content"><i class="fa fa-star<%= item[:bookmarked] ? '' : '-o' %>"></i></a>
+      <a href="#" class="secondary-content btn-bookmark-toggle" data-id="<%= item[:id] %>"><i class="fa fa-star<%= item[:bookmarked] ? '' : '-o' %>"></i></a>
     </li>
 <% end %>

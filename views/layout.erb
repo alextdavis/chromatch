@@ -2,18 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Title</title>
+  <title><%= @title ||= "Chromatch"%></title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="description" content="">
   <meta name="author" content="">
 
   <link href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/css/materialize.min.css" rel="stylesheet">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
   <link href="/css/main.css" rel="stylesheet">
 
   <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/js/materialize.min.js"></script>
-  <script src="js/app.js"></script>
+  <script src="/js/typeahead.bundle.js"></script>
+  <script src="/js/app.js"></script>
 </head>
 
 <body>
@@ -22,24 +24,20 @@
     <div class="title-container">
       <div class="nav-wrapper">
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-        <a href="#" class="brand-logo">Title</a>
+        <a id="logo-container" href="#" class="brand-logo"><%= @title %></a>
       </div>
     </div>
   </nav>
   <ul id="nav-mobile" class="side-nav fixed">
-    <!--<li>
-      <a href="#" class="background-white">
-      <img src="images/westport-logo.png" class="responsive-img left-align"></a>
-    </li>
-    <div class="divider"></div>-->
     <li class="logo module">
       <a href="#" class="brand-logo white-text " style="padding-top: 80px; padding-bottom: 10px;">
-        <img src="images/default_profile.jpg" class="circle responsive-profile-img z-depth-1 middle">  ProfileName</a>
+        <img src="<%= current_user.avatar %>" class="circle responsive-profile-img z-depth-1 middle">  <%= current_user.name %>
+      </a>
     </li>
     <div class="divider"></div>
-    <li><a href="#" class="waves-effect" style="padding-top: 10px; padding-bottom: 10px;"><i class="mdi-action-list"></i> Browse</a></li>
-    <li><a href="#" class="waves-effect" style="padding-top: 10px; padding-bottom: 10px;"><i class="mdi-action-search"></i> Search</a></li>
-    <li><a href="#" class="waves-effect" style="padding-top: 10px; padding-bottom: 10px;"><i class="mdi-action-favorite-outline"></i> Favorites</a></li>
+    <li><a href="/browse" class="waves-effect"><i class="mdi-action-list"></i> Browse</a></li>
+    <li><a href="/search" class="waves-effect"><i class="mdi-action-search"></i> Search</a></li>
+    <li><a href="/bookmarks" class="waves-effect"><i class="fa fa-star"></i> Bookmarks</a></li>
     <div class="divider"></div>
     <li><a href="#" class="waves-effect" style="padding-top: 10px; padding-bottom: 10px;"><i class="mdi-action-settings"></i> Settings</a></li>
   </ul>

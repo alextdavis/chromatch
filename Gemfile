@@ -1,7 +1,8 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
-ruby '2.1.5'
+#ruby '2.1.2'
 
+gem 'backports', '~> 3.6.4'
 gem 'rake'
 gem 'thin'
 gem 'sinatra'
@@ -12,7 +13,7 @@ gem 'sequel'
 gem 'json'
 
 group :development do
-  gem 'sqlite3'
+  gem 'sqlite3', '~> 1.3.10'
   gem 'thin'
 end
 

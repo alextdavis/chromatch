@@ -1,1 +1,51 @@
-<!--/public For users who haven't logged in yet.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title><%= @title ||= "Chromatch" %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <link href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/css/materialize.min.css" rel="stylesheet">
+  <link href="/css/main.css" rel="stylesheet">
+
+  <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/js/materialize.min.js"></script>
+  <script src="js/app.js"></script>
+</head>
+
+<body>
+<nav class="cyan darken-3" role="navigation">
+  <div class="container">
+    <div class="nav-wrapper">
+      <a id="logo-container" href="#" class="brand-logo"><%= @title %></a>
+
+      <div class="col offset-l4 valign-wrapper hide-on-med-and-down" style="float:right; padding-right:10px;">
+        <a href="/login"><img src="/images/google_signin.png"></a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="col s12 m12 valign-wrapper hide-on-large-only">
+  <a href="/login"><img src="/images/google_signin.png"></a>
+</div>
+
+
+<h3 class="center-align blue-grey-text darken-4">Connect.</h3>
+
+<p class="center-align flow-text blue-grey-text darken-4">Connect with your colleagues.</p>
+
+<h3 class="center-align blue-grey-text lighten-3">Share.</h3>
+
+<p class="center-align flow-text blue-grey-text darken-4"> Share your educational experiences, interests, and career
+  path with your colleagues.</p>
+
+<h3 class="center-align blue-grey-text lighten-3">Explore.</h3>
+
+<p class="center-align flow-text blue-grey-text darken-4"> Explore teachers that are in your district and learn about
+  mutual interests or educational experiences.</p>
+</body>
+</html>

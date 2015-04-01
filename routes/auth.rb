@@ -1,7 +1,10 @@
 class Chromatch < Sinatra::Base
   get '/login' do
     redirect '/auth/google'
+  end
 
+  get '/logout' do
+    redirect '/auth/logout'
   end
 
   %w(get post).each do |method|
