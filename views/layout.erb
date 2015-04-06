@@ -21,7 +21,7 @@
 <body>
 <header>
   <nav class="light-blue lighten-1"> <!-- Use of <nav> here violates the spec. However, materialize gives no other option to use their styling. -->
-    <div class="container">
+    <div class="title-container">
       <div class="nav-wrapper">
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
         <a id="logo-container" href="#" class="brand-logo"><%= @title %></a>
@@ -29,8 +29,11 @@
     </div>
   </nav>
   <ul id="nav-mobile" class="side-nav fixed">
-    <li class="logo">
-      <a href="/profile" class="brand-logo"><br><img src="<%= current_user.avatar %>" alt="" class="circle responsive-profile-img left-align z-depth-1" width="180" height="180"><%= current_user.name %></a></li>
+    <li class="logo module">
+      <a href="#" class="brand-logo white-text " style="padding-top: 90px; padding-bottom: 10px;">
+        <img src="<%= current_user.avatar %>" class="circle responsive-profile-img z-depth-1 left-align">  <%= current_user.name %>
+      </a>
+    </li>
     <div class="divider"></div>
     <li><a href="/browse" class="waves-effect"><i class="mdi-action-list"></i> Browse</a></li>
     <li><a href="/search" class="waves-effect"><i class="mdi-action-search"></i> Search</a></li>
@@ -45,30 +48,29 @@
 
 <main>
   <div class="container">
-      <% if flash[:info] %>         <!-- I guess this should be updated to make toasts instead. -->
+    <% if flash[:info] %>         <!-- I guess this should be updated to make toasts instead. -->
         <div class="alert alert-info">
-            <button type="button" class="close" data-dismiss="alert">×</button> <%= flash[:info] %> </div>
-      <% end %>
-      <% if flash[:success] %>
-          <div class="alert alert-success">
-            <button type="button" class="close" data-dismiss="alert">×</button><%= flash[:success] %>  </div>
-      <% end %>
-      <% if flash[:error] %>
-          <% unless flash[:error]=='' || flash[:error]==nil || flash[:error]==[] %>
-              <div class="alert alert-danger">
-                <button type="button" class="close" data-dismiss="alert">×</button> <%= flash[:error] %> </div>
-          <% else %>
-              <div class="alert alert-danger">
-                <button type="button" class="close" data-dismiss="alert">×</button>
-                <strong> Unknown Error.</strong> It appears that an operation failed, but no error message was
-                generated.
-                Please contact site admin.
-              </div>
-          <% end %>
-      <% end %>
-      <%= yield %>
-      <br>
-      <a class="btn light-blue lighten-1 waves-effect" onclick="toast('I am a toast', 4000)">Toast!</a>
+          <button type="button" class="close" data-dismiss="alert">×</button> <%= flash[:info] %> </div>
+    <% end %>
+    <% if flash[:success] %>
+        <div class="alert alert-success">
+          <button type="button" class="close" data-dismiss="alert">×</button><%= flash[:success] %>  </div>
+    <% end %>
+    <% if flash[:error] %>
+        <% unless flash[:error]=='' || flash[:error]==nil || flash[:error]==[] %>
+            <div class="alert alert-danger">
+              <button type="button" class="close" data-dismiss="alert">×</button> <%= flash[:error] %> </div>
+        <% else %>
+            <div class="alert alert-danger">
+              <button type="button" class="close" data-dismiss="alert">×</button>
+              <strong> Unknown Error.</strong> It appears that an operation failed, but no error message was
+              generated.
+              Please contact site admin.
+            </div>
+        <% end %>
+    <% end %>
+    <%= yield %>
+    <br>
   </div>
 </main>
 
