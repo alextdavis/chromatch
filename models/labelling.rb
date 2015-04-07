@@ -7,6 +7,11 @@ class Labelling < Sequel::Model
   # --- Hooks ---
 
   # --- Validation ---
+  def validate
+    super
+
+    validates_presence [:label_id, :user_id, :weight]
+  end
 
   # --- Class Methods ---
 

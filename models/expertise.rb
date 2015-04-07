@@ -6,6 +6,10 @@ class Expertise < Sequel::Model
   # --- Hooks ---
 
   # --- Validation ---
+  def validate
+    super
+    validates_presence [:statement, :source, :user_id]
+  end
 
   # --- Class Methods ---
 
